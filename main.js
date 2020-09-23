@@ -12,9 +12,7 @@ const burger = document.querySelector('.header__burger'),
 //прелоадер
       
 window.onload = function() {
-document.querySelector('.preloader').classList.add("hide");
-};
-
+document.querySelector('.preloader').classList.add("hide");};
 
 
 //скролл по якорям
@@ -28,13 +26,11 @@ menu_items.forEach(item => {
         document.getElementById(block_id).scrollIntoView({
             behavior: 'smooth',
              block: 'start',
-
-         });
+     });
 
         burger.classList.remove('active');
         menu.classList.remove('active');
         document.body.style.overflow = '';
-
     });
 });
 
@@ -46,17 +42,13 @@ function scrollBurger() {
     document.body.style.overflow = 'hidden';
 } else {
     document.body.style.overflow = '';
-}
-}
-
+}}
 
 burger.addEventListener('click', () => {
     burger.classList.toggle('active');
     menu.classList.toggle('active');
-
     scrollBurger()
 });
-
 
 
 
@@ -77,7 +69,6 @@ function modals(buttonSelector) {
       modal.addEventListener('click', (e) => {
         if (e.target === modal || e.target === modal_close) {
           modal.classList.remove('active');
-
           scrollBurger()
         }
       });
@@ -85,8 +76,7 @@ function modals(buttonSelector) {
 
   function blockScroll() {
     document.body.style.overflow = 'hidden';
-  }
-}
+  }}
 
 modals('.modal-btn');
 
@@ -121,12 +111,9 @@ function validateForm() {
     } else {
       input_err.innerText = '';
     }
-    
   });
- 
 }
 validateForm();
-
 
 
 // header
@@ -197,7 +184,6 @@ let statusMessage = document.createElement('div');
    statusMessage.textContent = message.failure;
     // console.log(error.message);
  });
-
 });
 
 
@@ -234,12 +220,10 @@ var mySwiper = new Swiper('.swiper-container', {
           slidesPerView: 3,
           spaceBetween: 70
         },
-       
       },
 
     observer: true,  
-   
-   
+ 
   });
  
 
