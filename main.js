@@ -9,13 +9,13 @@ const burger = document.querySelector('.header__burger'),
       menu_items = document.querySelectorAll('.scroll__link');
     
       
-//прелоадер
+//preloader
       
 window.onload = function() {
 document.querySelector('.preloader').classList.add("hide");};
 
 
-//скролл по якорям
+//scroll
         
 menu_items.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -35,7 +35,7 @@ menu_items.forEach(item => {
 });
 
 
-//меню бургер
+//burger
 
 function scrollBurger() {
   if(menu.classList.contains('active')) {
@@ -52,7 +52,7 @@ burger.addEventListener('click', () => {
 
 
 
-//модальные окна
+//modals
 
 function modals(buttonSelector) {
 
@@ -82,7 +82,7 @@ modals('.modal-btn');
 
 
 
-//валидация формы
+//form validation
 
 function validateForm() {
   let form_input = document.querySelector('#phone');
@@ -143,7 +143,7 @@ mark.addEventListener('click', () => {
 
 
 
-//отправка формы
+//send form
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
@@ -188,7 +188,7 @@ let statusMessage = document.createElement('div');
 
 
 
-//слайдер
+
 
 var mySwiper = new Swiper('.swiper-container', {
     slidesPerView: 2,
