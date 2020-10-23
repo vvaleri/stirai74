@@ -35,6 +35,7 @@ menu_items.forEach(item => {
 });
 
 
+
 //burger
 
 function scrollBurger() {
@@ -50,6 +51,31 @@ burger.addEventListener('click', () => {
     scrollBurger()
 });
 
+
+// header
+
+window.addEventListener('scroll', () => {
+  
+  let scrolled = document.documentElement.scrollTop;
+  
+  if (scrolled > 60) {
+    header.classList.add('active'); 
+    mark.style.display = 'block';
+    main_header.style.backgroundColor = '#745150';
+  
+  } else {
+    header.classList.remove('active');
+    main_header.style.backgroundColor = '';
+    mark.style.display= '';
+  } 
+});
+
+mark.addEventListener('click', () => { 
+ let scrolled = document.documentElement.scrollTop;
+   if (scrolled > 60) {
+     header.classList.toggle('active');
+   }
+}); 
 
 
 //modals
@@ -84,10 +110,7 @@ modals('.modal-btn');
 
 //form validation
 
-function validateForm() {
-  let form_input = document.querySelector('#phone');
-
-  let input_message = {
+let input_message = {
     onlyNumber: 'Поле должно содержать только цифры',
     inputMax: 'Максимальное число символов: 15',
     inputMin: 'Минимальное число символов: 6'
@@ -96,7 +119,10 @@ function validateForm() {
   let input_err = document.createElement('div');
   document.querySelector('.modal__content').append(input_err);
   input_err.classList.add('validate');
-  
+
+
+function validateForm() {
+  let form_input = document.querySelector('#phone');
 
   form_input.addEventListener('input', function() {
     let value = this.value;
@@ -116,39 +142,13 @@ function validateForm() {
 validateForm();
 
 
-// header
-
-window.addEventListener('scroll', () => {
-  
-  let scrolled = document.documentElement.scrollTop;
-  
-  if (scrolled > 60) {
-    header.classList.add('active'); 
-    mark.style.display = 'block';
-    main_header.style.backgroundColor = '#745150';
-  
-  } else {
-    header.classList.remove('active');
-    main_header.style.backgroundColor = '';
-    mark.style.display= '';
-  } 
-});
-
-mark.addEventListener('click', () => { 
- let scrolled = document.documentElement.scrollTop;
-   if (scrolled > 60) {
-     header.classList.toggle('active');
-   }
-}); 
-
-
 
 //send form
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
 
- let message = {
+function sendForm() {
+      
+let message = {
   success: 'Спасибо! Мы свяжемся с Вами в ближайшее время',
   failure: 'Упс, что-то пошло не так...'
 };
@@ -159,7 +159,8 @@ let statusMessage = document.createElement('div');
     
   let formData = new FormData(form);
 
-  fetch('mail.php', {
+      
+ fetch('mail.php', {
     method: 'POST',
     body: formData
   })
@@ -184,8 +185,17 @@ let statusMessage = document.createElement('div');
    statusMessage.textContent = message.failure;
     // console.log(error.message);
  });
-});
+}
 
+
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+      
+  if (input_err.innerText === '') {
+    sendForm()
+  } 
+});
 
 
 
