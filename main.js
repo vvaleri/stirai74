@@ -112,8 +112,8 @@ modals('.modal-btn');
 
 let input_message = {
     onlyNumber: 'Поле должно содержать только цифры',
-    inputMax: 'Максимальное число символов: 15',
-    inputMin: 'Минимальное число символов: 6'
+    inputMax: 'Максимальное число символов: 11',
+    inputMin: 'Минимальное число символов: 7'
   };
 
   let input_err = document.createElement('div');
@@ -126,7 +126,7 @@ function validateForm() {
 
   form_input.addEventListener('input', function() {
     let value = this.value;
-    let input_val = value.replace(/[^0-9 ]/g, '');
+    let input_val = value.replace(/[^0-9]/g, '');
 
     if(!input_val) {
       input_err.innerText = input_message.onlyNumber;
@@ -142,9 +142,21 @@ function validateForm() {
 validateForm();
 
 
+function checkPhone() {
+
+let reg = new RegExp(/^\d+$/)
+let value_input = form_input.value
+
+  if (!reg.test(value_input)){
+    input_err.innerText = input_message.onlyNumber;
+  } else {
+    input_err.innerText === '';
+  } 
+}
+
+
 
 //send form
-
 
 function sendForm() {
       
@@ -191,6 +203,7 @@ let statusMessage = document.createElement('div');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+  checkPhone()
       
   if (input_err.innerText === '') {
     sendForm()
