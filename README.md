@@ -1,5 +1,5 @@
 # stirai74
-simple page of company https://stirai74.ru/
+simple [page](https://stirai74.ru/) of company 
 
 created, hosting
   
